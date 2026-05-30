@@ -1,0 +1,41 @@
+{
+  "pages": [
+    "pages/recipes/recipes",
+    "pages/table/table",
+    "pages/mine/mine",
+    "pages/login/login",
+    "pages/recipe-detail/recipe-detail",
+    "pages/recipe-form/recipe-form",
+    "pages/history/history"
+  ],
+  "tabBar": {
+    "list": [
+      {
+        "pagePath": "pages/recipes/recipes",
+        "text": "菜谱",
+        "iconPath": "images/recipe.png",
+        "selectedIconPath": "images/recipe-active.png"
+      },
+      {
+        "pagePath": "pages/table/table",
+        "text": "餐桌",
+        "iconPath": "images/table.png",
+        "selectedIconPath": "images/table-active.png"
+      },
+      {
+        "pagePath": "pages/mine/mine",
+        "text": "我的",
+        "iconPath": "images/mine.png",
+        "selectedIconPath": "images/mine-active.png"
+      }
+    ]
+  },
+  "window": {
+    "backgroundTextStyle": "light",
+    "navigationBarBackgroundColor": "#fff",
+    "navigationBarTitleText": "好吃家庭",
+    "navigationBarTextStyle": "black"
+  },
+  "style": "v2",
+  "sitemapLocation": "sitemap.json"
+}
