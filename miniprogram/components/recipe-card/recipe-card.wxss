@@ -1,0 +1,24 @@
+.recipe-card {
+  margin-bottom: 24rpx;
+  overflow: hidden;
+}
+
+.card-img {
+  width: 100%;
+  height: 320rpx;
+  background: #f0f0f0;
+}
+
+.card-body {
+  padding: 20rpx 24rpx;
+}
+
+.difficulty-tag {
+  font-size: 22rpx;
+  padding: 4rpx 16rpx;
+  border-radius: 20rpx;
+}
+
+.difficulty-easy { background: #e8f5e9; color: #2e7d32; }
+.difficulty-medium { background: #fff3e0; color: #e65100; }
+.difficulty-hard { background: #fce4ec; color: #c62828; }

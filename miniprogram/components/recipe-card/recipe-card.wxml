@@ -1,0 +1,15 @@
+<view class="recipe-card bg-white rounded" bindtap="onTap">
+  <image class="card-img" src="{{recipe.imageUrl || '/images/default-recipe.png'}}" mode="aspectFill" />
+  <view class="card-body p-3">
+    <view class="flex justify-between items-center">
+      <view class="text-lg">{{recipe.name}}</view>
+      <view class="difficulty-tag difficulty-{{recipe.difficulty}}">
+        {{recipe.difficulty === 'easy' ? '简单' : recipe.difficulty === 'medium' ? '中等' : '困难'}}
+      </view>
+    </view>
+    <view class="flex mt-2 items-center">
+      <view class="text-sm">🕐 {{recipe.cookingTime}}分钟</view>
+      <view class="text-sm" style="margin-left: 24rpx;">🏷 {{recipe.category}}</view>
+    </view>
+  </view>
+</view>
