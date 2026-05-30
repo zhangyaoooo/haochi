@@ -6,7 +6,7 @@
 
   <view class="form-group bg-white rounded p-3 mb-2">
     <view class="form-label">分类</view>
-    <picker mode="selector" range="{{categories}}" value="{{categories.indexOf(form.category)}}" bindchange="onFieldChange" data-field="category">
+    <picker mode="selector" range="{{categories}}" value="{{categories.indexOf(form.category)}}" bindchange="onCategoryChange">
       <view class="form-picker">{{form.category}}</view>
     </picker>
 

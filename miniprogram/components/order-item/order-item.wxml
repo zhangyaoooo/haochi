@@ -6,11 +6,11 @@
       <view class="text-sm" wx:elif="{{group.orders[0].orderedByName}}">{{group.orders[0].orderedByName}}</view>
     </view>
 
-    <block wx:if="{{group.orders[0].status === 'ordered'}}">
+    <block wx:if="{{displayStatus === 'ordered'}}">
       <button class="btn-small btn-primary" bindtap="onClaim">我来做</button>
     </block>
 
-    <block wx:elif="{{group.orders[0].status === 'claimed'}}">
+    <block wx:elif="{{displayStatus === 'claimed'}}">
       <view class="text-sm">{{group.orders[0].claimedByName}} 正在做</view>
       <button
         wx:if="{{group.orders[0].claimedBy === currentOpenid}}"
@@ -24,7 +24,7 @@
       >不做了</button>
     </block>
 
-    <block wx:elif="{{group.orders[0].status === 'completed'}}">
+    <block wx:elif="{{displayStatus === 'completed'}}">
       <view class="completed-tag">✅ 已完成</view>
     </block>
   </view>

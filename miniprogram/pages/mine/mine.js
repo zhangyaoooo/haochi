@@ -34,19 +34,10 @@ Page({
       itemList: ['⭐', '⭐⭐', '⭐⭐⭐', '⭐⭐⭐⭐', '⭐⭐⭐⭐⭐'],
       success: (res) => {
         const rating = res.tapIndex + 1;
-        wx.showModal({
-          title: '写点评价（可选）',
-          editable: true,
-          placeholderText: '好吃！...',
-          success: (modalRes) => {
-            if (modalRes.confirm) {
-              call('rateOrder', { id, rating, feedback: modalRes.content || '' }).then(r => {
-                if (r.code === 0) {
-                  wx.showToast({ title: '评价成功', icon: 'success' });
-                  this.loadData();
-                }
-              });
-            }
+        call('rateOrder', { id, rating, feedback: '' }).then(r => {
+          if (r.code === 0) {
+            wx.showToast({ title: '评价成功', icon: 'success' });
+            this.loadData();
           }
         });
       }

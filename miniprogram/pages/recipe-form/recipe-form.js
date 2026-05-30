@@ -44,6 +44,10 @@ Page({
     }
   },
 
+  onCategoryChange(e) {
+    this.setData({ ['form.category']: this.data.categories[e.detail.value] });
+  },
+
   onFieldChange(e) {
     const { field } = e.currentTarget.dataset;
     this.setData({ ['form.' + field]: e.detail.value });

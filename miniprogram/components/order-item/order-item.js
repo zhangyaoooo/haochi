@@ -5,6 +5,15 @@ Component({
     group: { type: Object, value: {} },
     currentOpenid: { type: String, value: '' }
   },
+  observers: {
+    'group.orders': function(orders) {
+      let displayStatus = 'ordered';
+      if (orders.some(o => o.status === 'completed')) displayStatus = 'completed';
+      else if (orders.some(o => o.status === 'claimed')) displayStatus = 'claimed';
+      this.setData({ displayStatus });
+    }
+  },
+
   methods: {
     onClaim() {
       const order = this.data.group.orders.find(o => o.status === 'ordered');
