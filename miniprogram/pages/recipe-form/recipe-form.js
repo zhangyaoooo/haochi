@@ -9,10 +9,10 @@ Page({
       category: '荤菜',
       cookingTime: 30,
       difficulty: 'medium',
+      steps: '',
       imageUrl: ''
     },
     ingredients: [{ name: '', amount: '' }],
-    steps: [{ text: '' }],
     categories: ['荤菜', '素菜', '汤', '主食', '凉菜', '小吃', '其他'],
     difficulties: [
       { value: 'easy', label: '简单' },
@@ -34,13 +34,13 @@ Page({
               category: r.category,
               cookingTime: r.cookingTime,
               difficulty: r.difficulty,
-              imageUrl: r.imageUrl || ''
+              imageUrl: r.imageUrl || '',
+              steps: Array.isArray(r.steps) ? r.steps.map(s => s.text).join('\n') : (r.steps || '')
             },
-            ingredients: r.ingredients.length > 0 ? r.ingredients : [{ name: '', amount: '' }],
-            steps: r.steps.length > 0 ? r.steps : [{ text: '' }]
+            ingredients: r.ingredients.length > 0 ? r.ingredients : [{ name: '', amount: '' }]
           });
         }
-      });
+      }).catch(() => {});
     }
   },
 
@@ -73,43 +73,49 @@ Page({
     this.setData({ ingredients: arr.length > 0 ? arr : [{ name: '', amount: '' }] });
   },
 
-  onStepChange(e) {
-    const { index } = e.currentTarget.dataset;
-    this.setData({ [`steps[${index}].text`]: e.detail.value });
-  },
-
-  addStep() {
-    this.setData({ steps: [...this.data.steps, { text: '' }] });
-  },
-
-  removeStep(e) {
-    const { index } = e.currentTarget.dataset;
-    const arr = this.data.steps.filter((_, i) => i !== index);
-    this.setData({ steps: arr.length > 0 ? arr : [{ text: '' }] });
-  },
-
   onChooseImage() {
     wx.chooseImage({
       count: 1,
       sizeType: ['compressed'],
       success: (res) => {
-        wx.showLoading({ title: '上传中...' });
-        wx.cloud.uploadFile({
-          cloudPath: `recipe-images/${Date.now()}.png`,
-          filePath: res.tempFilePaths[0]
-        }).then(uploadRes => {
-          wx.hideLoading();
-          this.setData({ ['form.imageUrl']: uploadRes.fileID });
-        }).catch(() => {
-          wx.hideLoading();
-          wx.showToast({ title: '上传失败', icon: 'none' });
+        wx.showLoading({ title: '处理中...' });
+        // Compress: resize long edge to 800px, quality 60
+        wx.compressImage({
+          src: res.tempFilePaths[0],
+          compressedWidth: 800,
+          compressHeight: 800,
+          quality: 60,
+          success: (compressRes) => {
+            wx.cloud.uploadFile({
+              cloudPath: `recipe-images/${Date.now()}.png`,
+              filePath: compressRes.tempFilePath
+            }).then(uploadRes => {
+              wx.hideLoading();
+              this.setData({ ['form.imageUrl']: uploadRes.fileID });
+            }).catch(() => {
+              wx.hideLoading();
+              wx.showToast({ title: '上传失败', icon: 'none' });
+            });
+          },
+          fail: () => {
+            wx.hideLoading();
+            // Fallback: upload uncompressed
+            wx.cloud.uploadFile({
+              cloudPath: `recipe-images/${Date.now()}.png`,
+              filePath: res.tempFilePaths[0]
+            }).then(uploadRes => {
+              this.setData({ ['form.imageUrl']: uploadRes.fileID });
+            }).catch(() => {
+              wx.showToast({ title: '上传失败', icon: 'none' });
+            });
+          }
         });
       }
     });
   },
 
   onSubmit() {
-    const { isEdit, id, form, ingredients, steps } = this.data;
+    const { isEdit, id, form, ingredients } = this.data;
 
     if (!form.name.trim()) {
       wx.showToast({ title: '请输入菜名', icon: 'none' });
@@ -119,8 +125,7 @@ Page({
     const data = {
       ...form,
       name: form.name.trim(),
-      ingredients: ingredients.filter(i => i.name.trim()),
-      steps: steps.filter(s => s.text.trim()).map((s, i) => ({ text: s.text.trim() }))
+      ingredients: ingredients.filter(i => i.name.trim())
     };
 
     const fn = isEdit ? 'updateRecipe' : 'createRecipe';
@@ -131,7 +136,7 @@ Page({
         wx.showToast({ title: isEdit ? '已更新' : '已创建', icon: 'success' });
         setTimeout(() => wx.navigateBack(), 1500);
       }
-    });
+    }).catch(() => { wx.showToast({ title: '保存失败', icon: 'none' }); });
   },
 
   onDelete() {
@@ -146,7 +151,7 @@ Page({
               wx.showToast({ title: '已删除', icon: 'success' });
               setTimeout(() => wx.navigateBack(), 1500);
             }
-          });
+          }).catch(() => { wx.showToast({ title: '删除失败', icon: 'none' }); });
         }
       }
     });

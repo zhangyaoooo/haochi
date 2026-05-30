@@ -1,7 +1,8 @@
-<view class="container login-page">
+<view class="login-page">
   <view class="login-card">
-    <view class="login-title">🍽️ 好吃家庭</view>
-    <view class="login-subtitle">请输入家庭密码</view>
+    <view class="login-icon">🍽️</view>
+    <view class="login-title">好吃家庭</view>
+    <view class="login-subtitle">属于我们家的味道</view>
 
     <input
       class="password-input"
@@ -16,7 +17,7 @@
     <view class="error-msg" wx:if="{{error}}">{{error}}</view>
 
     <button class="btn-primary login-btn" bindtap="onSubmit">
-      进入
+      开饭啦
     </button>
   </view>
 </view>

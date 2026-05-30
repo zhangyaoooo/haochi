@@ -16,6 +16,6 @@ Page({
         });
         this.setData({ orders: res.data, grouped, loading: false });
       }
-    });
+    }).catch(() => { this.setData({ loading: false }); });
   }
 });

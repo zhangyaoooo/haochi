@@ -21,7 +21,7 @@ Page({
         myOrders: ordersRes.code === 0 ? ordersRes.data : [],
         myClaims: claimsRes.code === 0 ? claimsRes.data : []
       });
-    });
+    }).catch(() => {});
   },
 
   onSwitchTab(e) {
@@ -39,7 +39,7 @@ Page({
             wx.showToast({ title: '评价成功', icon: 'success' });
             this.loadData();
           }
-        });
+        }).catch(() => { wx.showToast({ title: '评价失败', icon: 'none' }); });
       }
     });
   },
@@ -56,7 +56,7 @@ Page({
               wx.showToast({ title: '已取消', icon: 'none' });
               this.loadData();
             }
-          });
+          }).catch(() => { wx.showToast({ title: '取消失败', icon: 'none' }); });
         }
       }
     });

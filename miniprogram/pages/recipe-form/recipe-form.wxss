@@ -1,80 +1,136 @@
-.form-label { font-size: 28rpx; font-weight: 600; margin-bottom: 12rpx; }
+/* 菜谱表单 — 温暖家常 */
+
+.form-label {
+  font-size: 28rpx;
+  font-weight: 700;
+  color: #4a3128;
+  margin-bottom: 14rpx;
+}
+
 .form-input {
-  border: 1rpx solid var(--color-border);
-  border-radius: 8rpx;
-  padding: 16rpx 20rpx;
+  border: 2rpx solid #e8d5c4;
+  border-radius: 16rpx;
+  padding: 20rpx 24rpx;
   font-size: 28rpx;
+  background: #fffaf5;
+  color: #4a3128;
 }
+
+.form-input:focus {
+  border-color: #c7693e;
+}
+
 .form-picker {
-  border: 1rpx solid var(--color-border);
-  border-radius: 8rpx;
-  padding: 16rpx 20rpx;
+  border: 2rpx solid #e8d5c4;
+  border-radius: 16rpx;
+  padding: 20rpx 24rpx;
   font-size: 28rpx;
-  color: var(--color-primary);
+  background: #fffaf5;
+  color: #c7693e;
 }
 
+/* 难度选择 */
 .difficulty-option {
-  padding: 12rpx 32rpx;
+  padding: 16rpx 40rpx;
   margin-right: 16rpx;
-  border-radius: 32rpx;
-  background: #f0f0f0;
+  border-radius: 28rpx;
+  background: #fffaf5;
   font-size: 26rpx;
-}
-.difficulty-option.active {
-  background: var(--color-primary);
-  color: #fff;
+  color: #9b8579;
+  border: 2rpx solid transparent;
 }
 
+.difficulty-option.active {
+  background: #fef3eb;
+  color: #c7693e;
+  border-color: #c7693e;
+}
+
+/* 图片上传 */
 .image-upload {
   width: 200rpx;
   height: 200rpx;
-  border: 2rpx dashed var(--color-border);
-  border-radius: 12rpx;
+  border: 3rpx dashed #e8d5c4;
+  border-radius: 20rpx;
   overflow: hidden;
 }
-.image-upload image { width: 100%; height: 100%; }
+
+.image-upload image {
+  width: 100%;
+  height: 100%;
+}
+
 .upload-placeholder {
   height: 100%;
   display: flex;
   align-items: center;
   justify-content: center;
-  color: var(--color-text-light);
+  color: #c8b8a8;
+  font-size: 26rpx;
 }
 
-.ingredient-row, .step-row {
+/* 食材 */
+.ingredient-row {
   display: flex;
   align-items: center;
-  margin-bottom: 12rpx;
+  margin-bottom: 14rpx;
 }
-.ingredient-row input, .step-row textarea {
-  border: 1rpx solid var(--color-border);
-  border-radius: 8rpx;
-  padding: 12rpx 16rpx;
+
+.ingredient-row input {
+  border: 2rpx solid #e8d5c4;
+  border-radius: 14rpx;
+  padding: 16rpx 20rpx;
   font-size: 26rpx;
+  background: #fffaf5;
+  color: #4a3128;
 }
 
 .remove-btn {
-  width: 48rpx;
-  height: 48rpx;
+  width: 52rpx;
+  height: 52rpx;
   display: flex;
   align-items: center;
   justify-content: center;
-  color: #e74c3c;
-  font-size: 28rpx;
-  margin-left: 12rpx;
+  color: #c85a4a;
+  font-size: 32rpx;
+  margin-left: 14rpx;
 }
 
 .add-btn {
-  color: var(--color-primary);
-  padding: 12rpx 0;
+  color: #c7693e;
+  padding: 16rpx 0;
   font-size: 26rpx;
+  font-weight: 500;
 }
 
-.btn-danger {
-  background: #e74c3c;
-  color: #fff;
-  border-radius: 12rpx;
-  padding: 20rpx 32rpx;
-  margin-left: 16rpx;
-  font-size: 30rpx;
+/* 步骤编辑区 */
+.steps-textarea {
+  width: 100%;
+  min-height: 320rpx;
+  border: 2rpx solid #e8d5c4;
+  border-radius: 16rpx;
+  padding: 20rpx 24rpx;
+  font-size: 28rpx;
+  line-height: 1.8;
+  background: #fffaf5;
+  color: #4a3128;
+  box-sizing: border-box;
+}
+
+.steps-textarea:focus {
+  border-color: #c7693e;
+}
+
+/* 底部操作栏 */
+.bottom-bar {
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  display: flex;
+  gap: 16rpx;
+  padding: 20rpx 24rpx;
+  padding-bottom: calc(20rpx + env(safe-area-inset-bottom));
+  background: #fffaf5;
+  box-shadow: 0 -4rpx 24rpx rgba(140, 90, 50, 0.08);
 }

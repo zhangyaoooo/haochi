@@ -1,24 +1,58 @@
+/* 食谱卡片 — 温暖家常风 */
+
 .recipe-card {
-  margin-bottom: 24rpx;
+  border-radius: 20rpx;
   overflow: hidden;
+  background: #fffaf5;
+  box-shadow: 0 4rpx 24rpx rgba(140, 90, 50, 0.10);
+}
+
+.recipe-card:active {
+  transform: scale(0.97);
+  transition: transform 0.15s;
 }
 
 .card-img {
   width: 100%;
-  height: 320rpx;
-  background: #f0f0f0;
+  aspect-ratio: 1 / 1;
+  background: linear-gradient(135deg, #f5ebe0, #e8d5c4);
 }
 
 .card-body {
-  padding: 20rpx 24rpx;
+  padding: 20rpx 24rpx 24rpx;
 }
 
-.difficulty-tag {
+.card-name {
+  font-size: 28rpx;
+  font-weight: 700;
+  color: #4a3128;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.card-meta {
+  display: flex;
+  flex-direction: column;
+  gap: 10rpx;
+  margin-top: 12rpx;
+}
+
+.card-info {
   font-size: 22rpx;
-  padding: 4rpx 16rpx;
-  border-radius: 20rpx;
+  color: #9b8579;
 }
 
-.difficulty-easy { background: #e8f5e9; color: #2e7d32; }
-.difficulty-medium { background: #fff3e0; color: #e65100; }
-.difficulty-hard { background: #fce4ec; color: #c62828; }
+/* 难度标签 */
+.difficulty-tag {
+  display: inline-block;
+  font-size: 20rpx;
+  padding: 4rpx 14rpx;
+  border-radius: 20rpx;
+  font-weight: 500;
+  width: fit-content;
+}
+
+.difficulty-easy { background: #eaf4e8; color: #5d8a56; }
+.difficulty-medium { background: #fef3eb; color: #c7693e; }
+.difficulty-hard { background: #fce8e4; color: #c85a4a; }

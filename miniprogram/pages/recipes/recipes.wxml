@@ -1,6 +1,6 @@
 <view class="container">
-  <view class="search-bar bg-white rounded p-3 mb-2">
-    <input placeholder="搜索菜谱..." bindconfirm="onSearch" confirm-type="search" />
+  <view class="search-bar mb-2">
+    <input placeholder="🔍 搜索菜谱..." bindconfirm="onSearch" confirm-type="search" />
   </view>
 
   <scroll-view class="category-scroll" scroll-x>
@@ -13,20 +13,18 @@
     >{{item}}</view>
   </scroll-view>
 
-  <view class="recipe-list mt-2">
-    <recipe-card
-      wx:for="{{recipes}}"
-      wx:key="_id"
-      recipe="{{item}}"
-      bind:tap="onRecipeTap"
-    />
-    <view wx:if="{{!hasMore && recipes.length > 0}}" class="end-tip text-sm">
-      — 已经到底了 —
+  <view class="recipe-grid mt-2">
+    <view class="grid-item" wx:for="{{recipes}}" wx:key="_id">
+      <recipe-card recipe="{{item}}" bind:tap="onRecipeTap" />
     </view>
-    <view wx:if="{{recipes.length === 0}}" class="empty-tip">
-      <view class="text-lg">还没有菜谱</view>
-      <view class="text-sm mt-2">点击右下角 + 添加第一道菜吧</view>
-    </view>
+  </view>
+  <view wx:if="{{!hasMore && recipes.length > 0}}" class="end-tip">
+    — 已经到底了 —
+  </view>
+  <view wx:if="{{recipes.length === 0}}" class="empty-tip">
+    <view class="empty-tip-icon">📖</view>
+    <view class="text-lg">还没有菜谱</view>
+    <view class="text-sm mt-2">点击右下角 ＋ 添加第一道菜吧</view>
   </view>
 
   <view class="fab" bindtap="onAddRecipe">＋</view>

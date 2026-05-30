@@ -1,9 +1,9 @@
-<view class="order-group bg-white rounded p-3">
+<view class="order-group">
   <view class="flex justify-between items-center">
     <view>
       <view class="order-name">{{group.recipeName}}</view>
-      <view class="text-sm" wx:if="{{group.totalCount > 1}}">×{{group.totalCount}} 人点了这道菜</view>
-      <view class="text-sm" wx:elif="{{group.orders[0].orderedByName}}">{{group.orders[0].orderedByName}}</view>
+      <view class="order-by" wx:if="{{group.totalCount > 1}}">×{{group.totalCount}} 人点了这道菜</view>
+      <view class="order-by" wx:elif="{{group.orders[0].orderedByName}}">{{group.orders[0].orderedByName}}</view>
     </view>
 
     <block wx:if="{{displayStatus === 'ordered'}}">
@@ -11,7 +11,7 @@
     </block>
 
     <block wx:elif="{{displayStatus === 'claimed'}}">
-      <view class="text-sm">{{group.orders[0].claimedByName}} 正在做</view>
+      <view class="cook-by">{{group.orders[0].claimedByName}} 正在做</view>
       <button
         wx:if="{{group.orders[0].claimedBy === currentOpenid}}"
         class="btn-small btn-done"
@@ -30,7 +30,7 @@
   </view>
 
   <view wx:if="{{group.totalCount > 1}}" class="mt-2">
-    <view wx:for="{{group.orders}}" wx:key="_id" class="text-sm">
+    <view wx:for="{{group.orders}}" wx:key="_id" class="order-by">
       {{item.orderedByName}}
       <text wx:if="{{item.status === 'completed'}}"> — 已评价 {{item.rating}}⭐</text>
     </view>

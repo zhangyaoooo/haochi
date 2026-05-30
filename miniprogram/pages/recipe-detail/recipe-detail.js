@@ -10,9 +10,13 @@ Page({
     const { id } = options;
     call('getRecipeDetail', { id }).then(res => {
       if (res.code === 0) {
-        this.setData({ recipe: res.data, loading: false });
+        const recipe = res.data;
+        if (Array.isArray(recipe.steps)) {
+          recipe.steps = recipe.steps.map(s => s.text).join('\n');
+        }
+        this.setData({ recipe, loading: false });
       }
-    });
+    }).catch(() => { this.setData({ loading: false }); });
   },
 
   onOrder(e) {
@@ -35,7 +39,7 @@ Page({
             if (r.code === 0) {
               wx.showToast({ title: '已点好！', icon: 'success' });
             }
-          });
+          }).catch(() => { wx.showToast({ title: '点餐失败', icon: 'none' }); });
         }
       }
     });
@@ -57,7 +61,7 @@ Page({
               wx.showToast({ title: '已删除', icon: 'success' });
               setTimeout(() => wx.navigateBack(), 1500);
             }
-          });
+          }).catch(() => { wx.showToast({ title: '删除失败', icon: 'none' }); });
         }
       }
     });

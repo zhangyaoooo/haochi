@@ -45,13 +45,8 @@
   </view>
 
   <view class="form-group bg-white rounded p-3 mb-2">
-    <view class="form-label">📝 步骤</view>
-    <view wx:for="{{steps}}" wx:key="index" class="step-row">
-      <view class="step-num">{{index + 1}}</view>
-      <textarea class="flex-1" placeholder="描述步骤..." value="{{item.text}}" data-index="{{index}}" bindinput="onStepChange" auto-height />
-      <view class="remove-btn" data-index="{{index}}" bindtap="removeStep">✕</view>
-    </view>
-    <view class="add-btn" bindtap="addStep">+ 添加步骤</view>
+    <view class="form-label">📝 烹饪步骤</view>
+    <textarea class="steps-textarea" placeholder="描述整个烹饪过程..." value="{{form.steps}}" data-field="steps" bindinput="onFieldChange" auto-height />
   </view>
 
   <view style="height: 120rpx;"></view>

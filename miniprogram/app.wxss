@@ -1,15 +1,33 @@
+/* ═══════════════════════════════════════
+   好吃家庭 — 温暖家常风 全局主题
+   设计概念：奶奶的食谱本
+   ═══════════════════════════════════════ */
+
 page {
-  --color-primary: #e85d04;
-  --color-bg: #f8f8f8;
-  --color-text: #333;
-  --color-text-light: #999;
-  --color-border: #eee;
+  --color-primary: #c7693e;
+  --color-primary-dark: #a84e2a;
+  --color-primary-light: #fef3eb;
+  --color-bg: #fbf6f0;
+  --color-card: #fffaf5;
+  --color-text: #4a3128;
+  --color-text-light: #9b8579;
+  --color-border: #e8d5c4;
+  --color-border-light: #f0e4d8;
+  --color-accent-green: #7d9b76;
+  --color-accent-red: #c85a4a;
+  --color-shadow: rgba(140, 90, 50, 0.08);
+
   font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
   font-size: 28rpx;
   color: var(--color-text);
   background: var(--color-bg);
+  /* 仿纸张纹理 */
+  background-image:
+    radial-gradient(ellipse at 20% 50%, rgba(199, 105, 62, 0.03) 0%, transparent 60%),
+    radial-gradient(ellipse at 80% 20%, rgba(125, 155, 118, 0.03) 0%, transparent 50%);
 }
 
+/* ── 布局 ── */
 .container {
   padding: 24rpx;
 }
@@ -17,20 +35,100 @@ page {
 .flex { display: flex; }
 .flex-col { flex-direction: column; }
 .flex-1 { flex: 1; }
+.flex-wrap { flex-wrap: wrap; }
 .items-center { align-items: center; }
 .justify-between { justify-content: space-between; }
+
+/* ── 排版 ── */
 .text-sm { font-size: 24rpx; color: var(--color-text-light); }
-.text-lg { font-size: 32rpx; font-weight: 600; }
+.text-lg { font-size: 34rpx; font-weight: 700; color: var(--color-text); }
+.text-xl { font-size: 40rpx; font-weight: 700; }
+
+.mt-1 { margin-top: 8rpx; }
 .mt-2 { margin-top: 16rpx; }
+.mb-1 { margin-bottom: 8rpx; }
 .mb-2 { margin-bottom: 16rpx; }
+.p-2 { padding: 16rpx; }
 .p-3 { padding: 24rpx; }
-.bg-white { background: #fff; }
-.rounded { border-radius: 16rpx; }
+
+/* ── 卡片 ── */
+.bg-white {
+  background: var(--color-card);
+}
+.rounded {
+  border-radius: 20rpx;
+}
+.card {
+  background: var(--color-card);
+  border-radius: 20rpx;
+  box-shadow: 0 4rpx 20rpx var(--color-shadow);
+}
+
+/* ── 按钮 ── */
 .btn-primary {
-  background: var(--color-primary);
+  background: linear-gradient(135deg, var(--color-primary), var(--color-primary-dark));
   color: #fff;
-  border-radius: 12rpx;
-  padding: 20rpx 48rpx;
+  border-radius: 16rpx;
+  padding: 24rpx 48rpx;
   text-align: center;
   font-size: 30rpx;
+  font-weight: 600;
+  box-shadow: 0 4rpx 16rpx rgba(199, 105, 62, 0.25);
+  border: none;
+}
+
+.btn-primary:active {
+  opacity: 0.85;
+  transform: scale(0.98);
+}
+
+.btn-outline {
+  background: var(--color-card);
+  color: var(--color-primary);
+  border: 2rpx solid var(--color-primary);
+  border-radius: 16rpx;
+  padding: 20rpx 32rpx;
+  font-size: 28rpx;
+  text-align: center;
+}
+
+.btn-small {
+  font-size: 24rpx;
+  padding: 12rpx 28rpx;
+  border-radius: 12rpx;
+  font-weight: 500;
+}
+
+.btn-danger {
+  background: var(--color-accent-red);
+  color: #fff;
+  border-radius: 16rpx;
+  padding: 20rpx 32rpx;
+  font-size: 28rpx;
+  text-align: center;
+}
+
+/* ── 输入框 ── */
+input, textarea {
+  color: var(--color-text);
+}
+
+/* ── 空状态 ── */
+.empty-tip {
+  text-align: center;
+  padding: 80rpx 40rpx;
+  color: var(--color-text-light);
+}
+
+.empty-tip-icon {
+  font-size: 80rpx;
+  margin-bottom: 16rpx;
+  opacity: 0.6;
+}
+
+/* ── 分割线 ── */
+.divider {
+  height: 1rpx;
+  background: var(--color-border-light);
+  margin: 24rpx 0;
 }

@@ -31,7 +31,7 @@ Component({
               } else {
                 wx.showToast({ title: r.msg, icon: 'none' });
               }
-            });
+            }).catch(() => { wx.showToast({ title: '认领失败', icon: 'none' }); });
           }
         }
       });
@@ -46,7 +46,7 @@ Component({
           wx.showToast({ title: '做好了！', icon: 'success' });
           this.triggerEvent('refresh');
         }
-      });
+      }).catch(() => { wx.showToast({ title: '操作失败', icon: 'none' }); });
     },
 
     onUnclaim() {
@@ -58,7 +58,7 @@ Component({
           wx.showToast({ title: '已放弃认领', icon: 'none' });
           this.triggerEvent('refresh');
         }
-      });
+      }).catch(() => { wx.showToast({ title: '操作失败', icon: 'none' }); });
     }
   }
 });

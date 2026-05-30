@@ -33,7 +33,7 @@ Page({
           page: page + 1
         });
       }
-    });
+    }).catch(() => {});
   },
 
   onCategoryTap(e) {

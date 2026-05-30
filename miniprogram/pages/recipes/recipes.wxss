@@ -1,8 +1,19 @@
+/* 菜谱列表 — 温暖家常 */
+
 .search-bar input {
-  padding: 16rpx 24rpx;
+  padding: 22rpx 28rpx;
   font-size: 28rpx;
+  background: #fffaf5;
+  border: 2rpx solid var(--color-border);
+  border-radius: 20rpx;
+  color: var(--color-text);
 }
 
+.search-bar input:focus {
+  border-color: var(--color-primary);
+}
+
+/* 分类横滚 */
 .category-scroll {
   white-space: nowrap;
   padding: 16rpx 0;
@@ -10,35 +21,54 @@
 
 .category-tag {
   display: inline-block;
-  padding: 12rpx 32rpx;
+  padding: 14rpx 36rpx;
   margin-right: 16rpx;
-  background: #fff;
-  border-radius: 32rpx;
+  background: #fffaf5;
+  border-radius: 28rpx;
   font-size: 26rpx;
+  color: #9b8579;
+  box-shadow: 0 2rpx 8rpx rgba(140, 90, 50, 0.06);
 }
 
 .category-tag.active {
-  background: var(--color-primary);
+  background: linear-gradient(135deg, #c7693e, #b85a32);
   color: #fff;
+  box-shadow: 0 4rpx 16rpx rgba(199, 105, 62, 0.3);
 }
 
+/* 双列网格 */
+.recipe-grid {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 16rpx;
+}
+
+.grid-item {
+  width: calc(50% - 8rpx);
+}
+
+/* 加载提示 */
+.end-tip {
+  text-align: center;
+  padding: 48rpx 0;
+  color: #c8b8a8;
+}
+
+/* 浮动按钮 */
 .fab {
   position: fixed;
-  right: 40rpx;
-  bottom: 120rpx;
-  width: 96rpx;
-  height: 96rpx;
-  background: var(--color-primary);
+  right: 36rpx;
+  bottom: 140rpx;
+  width: 100rpx;
+  height: 100rpx;
+  background: linear-gradient(135deg, #c7693e, #b85a32);
   color: #fff;
-  font-size: 48rpx;
+  font-size: 52rpx;
+  font-weight: 300;
   border-radius: 50%;
   display: flex;
   align-items: center;
   justify-content: center;
-  box-shadow: 0 4rpx 16rpx rgba(232, 93, 4, 0.4);
-}
-
-.end-tip, .empty-tip {
-  text-align: center;
-  padding: 80rpx 0;
+  box-shadow: 0 8rpx 28rpx rgba(199, 105, 62, 0.35);
+  z-index: 10;
 }

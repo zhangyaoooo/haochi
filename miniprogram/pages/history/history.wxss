@@ -1,10 +1,36 @@
+/* 历史记录 — 温暖家常 */
+
 .history-item {
-  border-left: 6rpx solid #27ae60;
+  background: #fffaf5;
+  border-radius: 20rpx;
+  padding: 24rpx;
+  margin-bottom: 16rpx;
+  box-shadow: 0 2rpx 16rpx rgba(140, 90, 50, 0.06);
+  border-left: 4rpx solid #7d9b76;
+}
+
+.history-name {
+  font-size: 30rpx;
+  font-weight: 700;
+  color: #4a3128;
+}
+
+.history-meta {
+  font-size: 24rpx;
+  color: #9b8579;
+  margin-top: 6rpx;
+}
+
+.history-rating {
+  font-size: 32rpx;
 }
 
 .feedback {
-  background: #f8f8f8;
-  padding: 12rpx 16rpx;
-  border-radius: 8rpx;
+  background: #fbf6f0;
+  padding: 14rpx 20rpx;
+  border-radius: 14rpx;
   font-style: italic;
+  color: #9b8579;
+  margin-top: 12rpx;
+  font-size: 26rpx;
 }

@@ -1,52 +1,83 @@
+/* 菜谱详情 — 食谱书页 */
+
 .detail-img {
   width: 100%;
-  height: 480rpx;
-  background: #f0f0f0;
+  height: 500rpx;
+  background: linear-gradient(135deg, #f5ebe0, #e8d5c4);
 }
 
 .detail-name {
-  font-size: 36rpx;
-  font-weight: 700;
+  font-size: 40rpx;
+  font-weight: 800;
+  color: #4a3128;
+  letter-spacing: 2rpx;
 }
 
+.detail-meta {
+  display: flex;
+  gap: 24rpx;
+  margin-top: 16rpx;
+  color: #9b8579;
+  font-size: 26rpx;
+}
+
+/* 区块 */
 .section-title {
   font-size: 30rpx;
-  font-weight: 600;
-  margin-bottom: 16rpx;
+  font-weight: 700;
+  color: #4a3128;
+  margin-bottom: 20rpx;
+  padding-bottom: 16rpx;
+  border-bottom: 2rpx solid #f0e4d8;
+  display: flex;
+  align-items: center;
+  gap: 8rpx;
 }
 
+/* 食材列表 */
 .ingredient-item {
   display: flex;
   justify-content: space-between;
-  padding: 12rpx 0;
-  border-bottom: 1rpx solid var(--color-border);
-}
-
-.step-item {
-  display: flex;
   padding: 16rpx 0;
-  border-bottom: 1rpx solid var(--color-border);
+  border-bottom: 1rpx dotted #e8d5c4;
+  font-size: 28rpx;
 }
 
-.step-num {
-  width: 48rpx;
-  height: 48rpx;
-  background: var(--color-primary);
-  color: #fff;
-  border-radius: 50%;
+.ingredient-item:last-child {
+  border-bottom: none;
+}
+
+.ingredient-amount {
+  color: #9b8579;
+  font-size: 26rpx;
+}
+
+/* 步骤文本 */
+.steps-content {
+  line-height: 2;
+  font-size: 28rpx;
+  color: #5a4035;
+  white-space: pre-wrap;
+}
+
+/* 编辑/删除入口 */
+.detail-actions {
   display: flex;
-  align-items: center;
-  justify-content: center;
-  font-size: 24rpx;
-  margin-right: 16rpx;
-  flex-shrink: 0;
+  gap: 32rpx;
+  padding-top: 8rpx;
 }
 
-.step-text {
-  flex: 1;
-  line-height: 1.6;
+.action-link {
+  font-size: 26rpx;
+  color: #c7693e;
+  padding: 4rpx 0;
 }
 
+.action-delete {
+  color: #c85a4a;
+}
+
+/* 底部栏 */
 .bottom-bar {
   position: fixed;
   bottom: 0;
@@ -55,26 +86,31 @@
   display: flex;
   gap: 16rpx;
   padding: 20rpx 24rpx;
-  background: #fff;
-  box-shadow: 0 -2rpx 16rpx rgba(0,0,0,0.06);
+  padding-bottom: calc(20rpx + env(safe-area-inset-bottom));
+  background: #fffaf5;
+  box-shadow: 0 -4rpx 24rpx rgba(140, 90, 50, 0.08);
 }
 
 .btn-secondary {
-  background: #fff;
-  color: var(--color-primary);
-  border: 2rpx solid var(--color-primary);
-  border-radius: 12rpx;
-  padding: 20rpx 48rpx;
+  background: #fffaf5;
+  color: #c7693e;
+  border: 2rpx solid #c7693e;
+  border-radius: 16rpx;
+  padding: 22rpx 32rpx;
   text-align: center;
-  font-size: 30rpx;
+  font-size: 28rpx;
+  font-weight: 500;
 }
 
+/* 难度标签 */
 .difficulty-tag {
-  font-size: 22rpx;
-  padding: 4rpx 16rpx;
+  display: inline-block;
+  font-size: 24rpx;
+  padding: 6rpx 20rpx;
   border-radius: 20rpx;
+  font-weight: 500;
 }
 
-.difficulty-easy { background: #e8f5e9; color: #2e7d32; }
-.difficulty-medium { background: #fff3e0; color: #e65100; }
-.difficulty-hard { background: #fce4ec; color: #c62828; }
+.difficulty-easy { background: #eaf4e8; color: #5d8a56; }
+.difficulty-medium { background: #fef3eb; color: #c7693e; }
+.difficulty-hard { background: #fce8e4; color: #c85a4a; }

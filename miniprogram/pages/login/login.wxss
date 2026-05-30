@@ -1,8 +1,11 @@
+/* 登录页 — 温暖欢迎 */
+
 .login-page {
   min-height: 100vh;
   display: flex;
   align-items: center;
   justify-content: center;
+  background: linear-gradient(180deg, #fbf6f0 0%, #fef3eb 40%, #fdf0e8 100%);
 }
 
 .login-card {
@@ -10,31 +13,47 @@
   text-align: center;
 }
 
+.login-icon {
+  font-size: 100rpx;
+  margin-bottom: 24rpx;
+}
+
 .login-title {
-  font-size: 48rpx;
-  margin-bottom: 16rpx;
+  font-size: 52rpx;
+  font-weight: 800;
+  color: #4a3128;
+  margin-bottom: 12rpx;
+  letter-spacing: 4rpx;
 }
 
 .login-subtitle {
-  color: var(--color-text-light);
-  margin-bottom: 48rpx;
+  color: #9b8579;
+  font-size: 28rpx;
+  margin-bottom: 56rpx;
 }
 
 .password-input {
-  border: 2rpx solid var(--color-border);
-  border-radius: 12rpx;
-  padding: 24rpx;
+  border: 2rpx solid #e8d5c4;
+  border-radius: 20rpx;
+  padding: 28rpx 24rpx;
   font-size: 32rpx;
   text-align: center;
-  margin-bottom: 16rpx;
+  background: #fffaf5;
+  margin-bottom: 24rpx;
+  color: #4a3128;
+}
+
+.password-input:focus {
+  border-color: #c7693e;
 }
 
 .error-msg {
-  color: #e74c3c;
+  color: #c85a4a;
   font-size: 26rpx;
   margin-bottom: 16rpx;
 }
 
 .login-btn {
   width: 100%;
+  border-radius: 20rpx !important;
 }

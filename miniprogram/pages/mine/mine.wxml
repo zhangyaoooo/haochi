@@ -1,15 +1,15 @@
 <view class="container">
-  <view class="tab-bar bg-white rounded mb-2">
+  <view class="tab-bar mb-2">
     <view class="tab-item {{tabIndex === 0 ? 'active' : ''}}" data-index="0" bindtap="onSwitchTab">我点的</view>
     <view class="tab-item {{tabIndex === 1 ? 'active' : ''}}" data-index="1" bindtap="onSwitchTab">我做的</view>
   </view>
 
   <block wx:if="{{tabIndex === 0}}">
-    <view wx:for="{{myOrders}}" wx:key="_id" class="order-card bg-white rounded p-3 mb-2">
+    <view wx:for="{{myOrders}}" wx:key="_id" class="order-card">
       <view class="flex justify-between items-center">
         <view>
-          <view class="text-lg">{{item.recipeName}}</view>
-          <view class="text-sm">{{item.date}} · {{item.status === 'ordered' ? '待做' : item.status === 'claimed' ? '有人在做' : item.status === 'completed' ? '已完成' : ''}}</view>
+          <view class="order-name-mine">{{item.recipeName}}</view>
+          <view class="order-meta">{{item.date}} · {{item.status === 'ordered' ? '待做' : item.status === 'claimed' ? '有人在做' : item.status === 'completed' ? '已完成' : ''}}</view>
         </view>
         <block wx:if="{{item.status === 'ordered'}}">
           <button class="btn-small btn-cancel" data-id="{{item._id}}" bindtap="onCancel">取消</button>
@@ -18,28 +18,28 @@
           <button class="btn-small btn-primary" data-id="{{item._id}}" bindtap="onRate">评价</button>
         </block>
         <block wx:elif="{{item.status === 'completed' && item.rating}}">
-          <view class="text-sm">{{item.rating}}⭐</view>
+          <view class="history-rating">{{item.rating}}⭐</view>
         </block>
       </view>
     </view>
-    <view wx:if="{{myOrders.length === 0}}" class="empty-tip text-sm">还没点过菜</view>
+    <view wx:if="{{myOrders.length === 0}}" class="empty-tip">🍽️ 还没点过菜</view>
   </block>
 
   <block wx:if="{{tabIndex === 1}}">
-    <view wx:for="{{myClaims}}" wx:key="_id" class="order-card bg-white rounded p-3 mb-2">
+    <view wx:for="{{myClaims}}" wx:key="_id" class="order-card">
       <view class="flex justify-between items-center">
         <view>
-          <view class="text-lg">{{item.recipeName}}</view>
-          <view class="text-sm">{{item.date}} · {{item.status === 'claimed' ? '待完成' : item.status === 'completed' ? '已完成' : ''}}</view>
+          <view class="order-name-mine">{{item.recipeName}}</view>
+          <view class="order-meta">{{item.date}} · {{item.status === 'claimed' ? '待完成' : item.status === 'completed' ? '已完成' : ''}}</view>
         </view>
-        <view wx:if="{{item.rating}}" class="text-sm">评分: {{item.rating}}⭐</view>
+        <view wx:if="{{item.rating}}" class="history-rating">{{item.rating}}⭐</view>
       </view>
     </view>
-    <view wx:if="{{myClaims.length === 0}}" class="empty-tip text-sm">还没做过菜</view>
+    <view wx:if="{{myClaims.length === 0}}" class="empty-tip">👨‍🍳 还没做过菜</view>
   </block>
 
   <view class="actions mt-2">
     <button class="btn-outline" bindtap="onHistory">📋 历史记录</button>
-    <button class="btn-outline" bindtap="onLogout" style="color: #e74c3c;">🚪 退出</button>
+    <button class="btn-outline" bindtap="onLogout">🚪 退出</button>
   </view>
 </view>

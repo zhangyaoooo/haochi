@@ -1,31 +1,59 @@
+/* 点单卡片 — 温暖家常 */
+
 .order-group {
+  background: #fffaf5;
+  border-radius: 20rpx;
+  padding: 24rpx;
   margin-bottom: 16rpx;
+  box-shadow: 0 2rpx 16rpx rgba(140, 90, 50, 0.06);
+  border-left: 6rpx solid transparent;
+}
+
+.order-group[data-status="claimed"] {
+  border-left-color: #f0b060;
+}
+
+.order-group[data-status="completed"] {
+  border-left-color: #7d9b76;
 }
 
 .order-name {
-  font-size: 30rpx;
-  font-weight: 600;
+  font-size: 32rpx;
+  font-weight: 700;
+  color: #4a3128;
+}
+
+.order-by {
+  font-size: 24rpx;
+  color: #9b8579;
+  margin-top: 4rpx;
 }
 
 .btn-small {
   font-size: 24rpx;
-  padding: 10rpx 24rpx;
-  border-radius: 8rpx;
-  margin-left: 12rpx;
+  padding: 14rpx 28rpx;
+  border-radius: 14rpx;
+  margin-left: 16rpx;
+  font-weight: 500;
 }
 
 .btn-done {
-  background: #27ae60;
+  background: #7d9b76;
   color: #fff;
   border: none;
 }
 
 .btn-cancel {
-  background: #fff;
-  color: #999;
-  border: 1rpx solid #ddd;
+  background: #fffaf5;
+  color: #9b8579;
+  border: 2rpx solid #e8d5c4;
+}
+
+.cook-by {
+  font-size: 24rpx;
+  color: #c7693e;
 }
 
 .completed-tag {
-  font-size: 28rpx;
+  font-size: 32rpx;
 }

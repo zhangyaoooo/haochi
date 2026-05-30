@@ -33,7 +33,7 @@ Page({
         todayOrders: todayRes.code === 0 ? todayRes.data : [],
         tomorrowOrders: tomorrowRes.code === 0 ? tomorrowRes.data : []
       });
-    });
+    }).catch(() => {});
   },
 
   onRefresh() {
