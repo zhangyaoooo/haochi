@@ -1,0 +1,80 @@
+.form-label { font-size: 28rpx; font-weight: 600; margin-bottom: 12rpx; }
+.form-input {
+  border: 1rpx solid var(--color-border);
+  border-radius: 8rpx;
+  padding: 16rpx 20rpx;
+  font-size: 28rpx;
+}
+.form-picker {
+  border: 1rpx solid var(--color-border);
+  border-radius: 8rpx;
+  padding: 16rpx 20rpx;
+  font-size: 28rpx;
+  color: var(--color-primary);
+}
+
+.difficulty-option {
+  padding: 12rpx 32rpx;
+  margin-right: 16rpx;
+  border-radius: 32rpx;
+  background: #f0f0f0;
+  font-size: 26rpx;
+}
+.difficulty-option.active {
+  background: var(--color-primary);
+  color: #fff;
+}
+
+.image-upload {
+  width: 200rpx;
+  height: 200rpx;
+  border: 2rpx dashed var(--color-border);
+  border-radius: 12rpx;
+  overflow: hidden;
+}
+.image-upload image { width: 100%; height: 100%; }
+.upload-placeholder {
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: var(--color-text-light);
+}
+
+.ingredient-row, .step-row {
+  display: flex;
+  align-items: center;
+  margin-bottom: 12rpx;
+}
+.ingredient-row input, .step-row textarea {
+  border: 1rpx solid var(--color-border);
+  border-radius: 8rpx;
+  padding: 12rpx 16rpx;
+  font-size: 26rpx;
+}
+
+.remove-btn {
+  width: 48rpx;
+  height: 48rpx;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #e74c3c;
+  font-size: 28rpx;
+  margin-left: 12rpx;
+}
+
+.add-btn {
+  color: var(--color-primary);
+  padding: 12rpx 0;
+  font-size: 26rpx;
+}
+
+.btn-danger {
+  background: #e74c3c;
+  color: #fff;
+  border-radius: 12rpx;
+  padding: 20rpx 32rpx;
+  margin-left: 16rpx;
+  font-size: 30rpx;
+}

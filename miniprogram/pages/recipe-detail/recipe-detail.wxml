@@ -1,0 +1,41 @@
+<view class="container" wx:if="{{recipe}}">
+  <image class="detail-img" src="{{recipe.imageUrl || '/images/default-recipe.png'}}" mode="aspectFill" />
+
+  <view class="bg-white rounded p-3 mb-2">
+    <view class="flex justify-between items-center">
+      <view class="detail-name">{{recipe.name}}</view>
+      <view class="difficulty-tag difficulty-{{recipe.difficulty}}">
+        {{recipe.difficulty === 'easy' ? '简单' : recipe.difficulty === 'medium' ? '中等' : '困难'}}
+      </view>
+    </view>
+    <view class="flex mt-2">
+      <view class="text-sm">🕐 {{recipe.cookingTime}}分钟</view>
+      <view class="text-sm" style="margin-left: 24rpx;">🏷 {{recipe.category}}</view>
+    </view>
+  </view>
+
+  <view class="bg-white rounded p-3 mb-2">
+    <view class="section-title">🥬 食材</view>
+    <view class="ingredient-item" wx:for="{{recipe.ingredients}}" wx:key="name">
+      <view>{{item.name}}</view>
+      <view class="text-sm">{{item.amount}}</view>
+    </view>
+    <view wx:if="{{recipe.ingredients.length === 0}}" class="text-sm">暂无食材信息</view>
+  </view>
+
+  <view class="bg-white rounded p-3 mb-2">
+    <view class="section-title">📝 步骤</view>
+    <view class="step-item" wx:for="{{recipe.steps}}" wx:key="order">
+      <view class="step-num">{{index + 1}}</view>
+      <view class="step-text">{{item.text}}</view>
+    </view>
+    <view wx:if="{{recipe.steps.length === 0}}" class="text-sm">暂无步骤信息</view>
+  </view>
+
+  <view style="height: 120rpx;"></view>
+
+  <view class="bottom-bar">
+    <button class="btn-primary flex-1" data-date="today" bindtap="onOrder">今天吃这个</button>
+    <button class="btn-secondary flex-1" data-date="tomorrow" bindtap="onOrder">明天吃这个</button>
+  </view>
+</view>

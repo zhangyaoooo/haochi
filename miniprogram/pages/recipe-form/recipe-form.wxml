@@ -1,0 +1,63 @@
+<view class="container">
+  <view class="form-group bg-white rounded p-3 mb-2">
+    <view class="form-label">菜名 *</view>
+    <input class="form-input" placeholder="例如：红烧肉" value="{{form.name}}" data-field="name" bindinput="onFieldChange" />
+  </view>
+
+  <view class="form-group bg-white rounded p-3 mb-2">
+    <view class="form-label">分类</view>
+    <picker mode="selector" range="{{categories}}" value="{{categories.indexOf(form.category)}}" bindchange="onFieldChange" data-field="category">
+      <view class="form-picker">{{form.category}}</view>
+    </picker>
+
+    <view class="form-label mt-2">难度</view>
+    <view class="flex">
+      <view
+        wx:for="{{difficulties}}"
+        wx:key="value"
+        class="difficulty-option {{form.difficulty === item.value ? 'active' : ''}}"
+        data-field="difficulty"
+        bindtap="onFieldTap"
+        data-value="{{item.value}}"
+      >{{item.label}}</view>
+    </view>
+
+    <view class="form-label mt-2">烹饪时间</view>
+    <input class="form-input" type="number" placeholder="分钟" value="{{form.cookingTime}}" data-field="cookingTime" bindinput="onFieldChange" />
+  </view>
+
+  <view class="form-group bg-white rounded p-3 mb-2">
+    <view class="form-label">成品图</view>
+    <view class="image-upload" bindtap="onChooseImage">
+      <image wx:if="{{form.imageUrl}}" src="{{form.imageUrl}}" mode="aspectFill" />
+      <view wx:else class="upload-placeholder">＋ 点击上传</view>
+    </view>
+  </view>
+
+  <view class="form-group bg-white rounded p-3 mb-2">
+    <view class="form-label">🥬 食材</view>
+    <view wx:for="{{ingredients}}" wx:key="index" class="ingredient-row">
+      <input class="flex-1" placeholder="食材名" value="{{item.name}}" data-index="{{index}}" data-field="name" bindinput="onIngredientChange" />
+      <input style="width: 140rpx; margin-left: 16rpx;" placeholder="用量" value="{{item.amount}}" data-index="{{index}}" data-field="amount" bindinput="onIngredientChange" />
+      <view class="remove-btn" data-index="{{index}}" bindtap="removeIngredient">✕</view>
+    </view>
+    <view class="add-btn" bindtap="addIngredient">+ 添加食材</view>
+  </view>
+
+  <view class="form-group bg-white rounded p-3 mb-2">
+    <view class="form-label">📝 步骤</view>
+    <view wx:for="{{steps}}" wx:key="index" class="step-row">
+      <view class="step-num">{{index + 1}}</view>
+      <textarea class="flex-1" placeholder="描述步骤..." value="{{item.text}}" data-index="{{index}}" bindinput="onStepChange" auto-height />
+      <view class="remove-btn" data-index="{{index}}" bindtap="removeStep">✕</view>
+    </view>
+    <view class="add-btn" bindtap="addStep">+ 添加步骤</view>
+  </view>
+
+  <view style="height: 120rpx;"></view>
+
+  <view class="bottom-bar">
+    <button class="btn-primary flex-1" bindtap="onSubmit">{{isEdit ? '保存' : '创建菜谱'}}</button>
+    <button wx:if="{{isEdit}}" class="btn-danger" bindtap="onDelete">删除</button>
+  </view>
+</view>
