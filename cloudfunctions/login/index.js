@@ -4,7 +4,7 @@ cloud.init({ env: cloud.DYNAMIC_CURRENT_ENV });
 const FAMILY_PASSWORD = '33066';
 
 exports.main = async (event) => {
-  const { password } = event;
+  const { password, nickName, avatarUrl } = event;
   const { OPENID } = cloud.getWXContext();
 
   if (password !== FAMILY_PASSWORD) {
@@ -18,10 +18,16 @@ exports.main = async (event) => {
     await db.collection('users').add({
       data: {
         openid: OPENID,
+        nickName: nickName || '',
+        avatarUrl: avatarUrl || '',
         createdAt: db.serverDate()
       }
     });
+  } else {
+    await db.collection('users').doc(exist.data[0]._id).update({
+      data: { nickName: nickName || '', avatarUrl: avatarUrl || '' }
+    });
   }
 
-  return { code: 0, msg: 'ok' };
+  return { code: 0, msg: 'ok', openid: OPENID };
 };

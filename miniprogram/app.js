@@ -6,9 +6,14 @@ App({
     });
   },
 
+  onShow() {
+    if (!this.checkLogin()) {
+      wx.reLaunch({ url: '/pages/login/login' });
+    }
+  },
+
   checkLogin() {
-    const isLoggedIn = wx.getStorageSync('isLoggedIn');
-    return !!isLoggedIn;
+    return !!wx.getStorageSync('isLoggedIn');
   },
 
   setLoginState() {
