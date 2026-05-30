@@ -24,25 +24,24 @@ Page({
         return;
       }
 
-      // Password validated, now get user profile
+      // Password validated — capture and store openid immediately
+      wx.setStorageSync('openid', res.openid);
+
+      // Best effort: try to enrich with user profile
       wx.getUserProfile({
         desc: '用于显示家庭成员身份'
       }).then(profile => {
         const { nickName, avatarUrl } = profile.userInfo;
-        return call('login', { password, nickName, avatarUrl });
-      }).then(res => {
-        wx.hideLoading();
-        if (res && res.openid) {
-          wx.setStorageSync('openid', res.openid);
-        }
-        app.setLoginState();
-        wx.switchTab({ url: '/pages/recipes/recipes' });
+        // Fire-and-forget: send profile data, ignore result
+        call('login', { password, nickName, avatarUrl });
       }).catch(() => {
-        wx.hideLoading();
-        // User denied profile, still allow access
-        app.setLoginState();
-        wx.switchTab({ url: '/pages/recipes/recipes' });
+        // User denied profile — no action needed, openid already stored
       });
+
+      // Authenticated regardless of profile outcome
+      wx.hideLoading();
+      app.setLoginState();
+      wx.switchTab({ url: '/pages/recipes/recipes' });
     }).catch(() => {
       wx.hideLoading();
       wx.showToast({ title: '网络异常，请重试', icon: 'none' });
