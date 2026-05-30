@@ -1,0 +1,22 @@
+<view class="container login-page">
+  <view class="login-card">
+    <view class="login-title">🍽️ 好吃家庭</view>
+    <view class="login-subtitle">请输入家庭密码</view>
+
+    <input
+      class="password-input"
+      type="password"
+      placeholder="输入密码"
+      value="{{password}}"
+      bindinput="onInput"
+      focus="{{true}}"
+      bindconfirm="onSubmit"
+    />
+
+    <view class="error-msg" wx:if="{{error}}">{{error}}</view>
+
+    <button class="btn-primary login-btn" bindtap="onSubmit">
+      进入
+    </button>
+  </view>
+</view>

@@ -1,0 +1,40 @@
+.login-page {
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.login-card {
+  width: 80%;
+  text-align: center;
+}
+
+.login-title {
+  font-size: 48rpx;
+  margin-bottom: 16rpx;
+}
+
+.login-subtitle {
+  color: var(--color-text-light);
+  margin-bottom: 48rpx;
+}
+
+.password-input {
+  border: 2rpx solid var(--color-border);
+  border-radius: 12rpx;
+  padding: 24rpx;
+  font-size: 32rpx;
+  text-align: center;
+  margin-bottom: 16rpx;
+}
+
+.error-msg {
+  color: #e74c3c;
+  font-size: 26rpx;
+  margin-bottom: 16rpx;
+}
+
+.login-btn {
+  width: 100%;
+}
