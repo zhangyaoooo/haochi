@@ -1,0 +1,29 @@
+<view class="container">
+  <view class="section">
+    <view class="section-header text-lg">📅 今天 ({{todayDate}})</view>
+    <order-item
+      wx:for="{{todayOrders}}"
+      wx:key="recipeId"
+      group="{{item}}"
+      currentOpenid="{{currentOpenid}}"
+      bind:refresh="onRefresh"
+    />
+    <view wx:if="{{todayOrders.length === 0}}" class="empty-tip text-sm">
+      今天还没有人点菜
+    </view>
+  </view>
+
+  <view class="section mt-2">
+    <view class="section-header text-lg">📅 明天 ({{tomorrowDate}})</view>
+    <order-item
+      wx:for="{{tomorrowOrders}}"
+      wx:key="recipeId"
+      group="{{item}}"
+      currentOpenid="{{currentOpenid}}"
+      bind:refresh="onRefresh"
+    />
+    <view wx:if="{{tomorrowOrders.length === 0}}" class="empty-tip text-sm">
+      明天还没有人点菜
+    </view>
+  </view>
+</view>

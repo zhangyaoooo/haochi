@@ -1,0 +1,12 @@
+.section {
+  margin-bottom: 32rpx;
+}
+
+.section-header {
+  padding: 16rpx 0;
+}
+
+.empty-tip {
+  text-align: center;
+  padding: 40rpx 0;
+}

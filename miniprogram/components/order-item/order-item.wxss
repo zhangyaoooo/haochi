@@ -1,0 +1,31 @@
+.order-group {
+  margin-bottom: 16rpx;
+}
+
+.order-name {
+  font-size: 30rpx;
+  font-weight: 600;
+}
+
+.btn-small {
+  font-size: 24rpx;
+  padding: 10rpx 24rpx;
+  border-radius: 8rpx;
+  margin-left: 12rpx;
+}
+
+.btn-done {
+  background: #27ae60;
+  color: #fff;
+  border: none;
+}
+
+.btn-cancel {
+  background: #fff;
+  color: #999;
+  border: 1rpx solid #ddd;
+}
+
+.completed-tag {
+  font-size: 28rpx;
+}

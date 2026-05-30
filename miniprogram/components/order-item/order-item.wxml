@@ -1,0 +1,38 @@
+<view class="order-group bg-white rounded p-3">
+  <view class="flex justify-between items-center">
+    <view>
+      <view class="order-name">{{group.recipeName}}</view>
+      <view class="text-sm" wx:if="{{group.totalCount > 1}}">×{{group.totalCount}} 人点了这道菜</view>
+      <view class="text-sm" wx:elif="{{group.orders[0].orderedByName}}">{{group.orders[0].orderedByName}}</view>
+    </view>
+
+    <block wx:if="{{group.orders[0].status === 'ordered'}}">
+      <button class="btn-small btn-primary" bindtap="onClaim">我来做</button>
+    </block>
+
+    <block wx:elif="{{group.orders[0].status === 'claimed'}}">
+      <view class="text-sm">{{group.orders[0].claimedByName}} 正在做</view>
+      <button
+        wx:if="{{group.orders[0].claimedBy === currentOpenid}}"
+        class="btn-small btn-done"
+        bindtap="onComplete"
+      >做好了</button>
+      <button
+        wx:if="{{group.orders[0].claimedBy === currentOpenid}}"
+        class="btn-small btn-cancel"
+        bindtap="onUnclaim"
+      >不做了</button>
+    </block>
+
+    <block wx:elif="{{group.orders[0].status === 'completed'}}">
+      <view class="completed-tag">✅ 已完成</view>
+    </block>
+  </view>
+
+  <view wx:if="{{group.totalCount > 1}}" class="mt-2">
+    <view wx:for="{{group.orders}}" wx:key="_id" class="text-sm">
+      {{item.orderedByName}}
+      <text wx:if="{{item.status === 'completed'}}"> — 已评价 {{item.rating}}⭐</text>
+    </view>
+  </view>
+</view>
