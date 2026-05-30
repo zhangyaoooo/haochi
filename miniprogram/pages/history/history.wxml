@@ -1,0 +1,22 @@
+<view class="container">
+  <view class="text-lg mb-2">📋 历史记录</view>
+
+  <block wx:for="{{orders}}" wx:key="_id">
+    <view class="history-item bg-white rounded p-3 mb-2">
+      <view class="flex justify-between items-center">
+        <view>
+          <view class="text-lg">{{item.recipeName}}</view>
+          <view class="text-sm">{{item.date}}</view>
+          <view class="text-sm">点单人: {{item.orderedByName}}  厨师: {{item.claimedByName}}</view>
+        </view>
+        <view wx:if="{{item.rating}}" class="text-lg">{{item.rating}}⭐</view>
+        <view wx:else class="text-sm">未评价</view>
+      </view>
+      <view wx:if="{{item.feedback}}" class="feedback mt-2 text-sm">"{{item.feedback}}"</view>
+    </view>
+  </view>
+
+  <view wx:if="{{orders.length === 0 && !loading}}" class="empty-tip text-sm">
+    还没有已完成的历史记录
+  </view>
+</view>

@@ -1,0 +1,10 @@
+.history-item {
+  border-left: 6rpx solid #27ae60;
+}
+
+.feedback {
+  background: #f8f8f8;
+  padding: 12rpx 16rpx;
+  border-radius: 8rpx;
+  font-style: italic;
+}

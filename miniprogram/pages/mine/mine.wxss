@@ -1,0 +1,47 @@
+.tab-bar {
+  display: flex;
+}
+
+.tab-item {
+  flex: 1;
+  text-align: center;
+  padding: 20rpx;
+  font-size: 28rpx;
+  border-bottom: 4rpx solid transparent;
+}
+
+.tab-item.active {
+  color: var(--color-primary);
+  border-bottom-color: var(--color-primary);
+}
+
+.order-card {
+  border-left: 6rpx solid var(--color-primary);
+}
+
+.actions {
+  display: flex;
+  gap: 16rpx;
+}
+
+.btn-outline {
+  flex: 1;
+  background: #fff;
+  border: 1rpx solid var(--color-border);
+  border-radius: 12rpx;
+  padding: 20rpx;
+  font-size: 28rpx;
+  text-align: center;
+}
+
+.btn-small {
+  font-size: 24rpx;
+  padding: 10rpx 24rpx;
+  border-radius: 8rpx;
+}
+
+.btn-cancel {
+  background: #fff;
+  color: #999;
+  border: 1rpx solid #ddd;
+}
